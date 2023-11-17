@@ -1,4 +1,4 @@
 # adjust-font-size-to-container
-adjust font size to container using vanilla js
+adjust the font size to the container using vanilla js, text will always fit to it container
 
 ![](img.png)
