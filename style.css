@@ -1,0 +1,32 @@
+.main-container{
+	display: grid;
+	grid-template-columns: repeat(5,1fr);
+    grid-gap: 10px;
+
+	width: 80vw;
+	height: 80vh;
+	background-color:coral;
+}
+
+.child-container{
+	background-color:cornflowerblue;
+	border: 1px solid black;
+}
+.one-line{
+	white-space: nowrap;
+	color: white; 
+}
+.multi-line{
+	white-space: wrap;
+	color: black; 
+}
+
+.setting{
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 15px;
+}
+.setting label{
+	display: inline-block;
+	width: 100px;
+}
