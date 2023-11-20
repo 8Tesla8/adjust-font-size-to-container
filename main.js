@@ -42,15 +42,15 @@ function createOptionSelection(){
 
 const applyBtn = document.getElementById('applyBtn');
 applyBtn.addEventListener('click', ()=>{
-    const index = containerNumb.value;
+    const numb = containerNumb.value;
 
     let containers = [];
-    if(index == 'all'){
+    if(numb == 'all'){
         containers = document.getElementsByClassName('child-container');
     }
     else {
         containers.push(
-            document.getElementById(+index)
+            document.getElementById(+numb)
         );
     }
 
@@ -59,13 +59,14 @@ applyBtn.addEventListener('click', ()=>{
     Array.from(containers).forEach(container => {
         container.style.width = `${widthCont}px`;
         container.style.height = `${heightCont}px`;
+        const conteinerId = container.getAttribute("id");
 
         let userText = inputContainerText.value;
         if(userText === undefined || userText === null || userText === ''){
-            container.textContent = `${index})${createRandomText(textLength)}`;
+            container.textContent = `${conteinerId})${createRandomText(textLength)}`;
         }
         else {
-            container.textContent =  `${index})${userText}`;
+            container.textContent =  `${conteinerId})${userText}`;
         }
     });
 
