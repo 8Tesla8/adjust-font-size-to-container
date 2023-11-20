@@ -4,7 +4,7 @@
     grid-gap: 10px;
 
 	width: 80vw;
-	height: 80vh;
+	height: 60vh;
 	background-color:coral;
 }
 
@@ -29,4 +29,16 @@
 .setting label{
 	display: inline-block;
 	width: 100px;
+}
+
+#parentContainer{
+	display: flex;
+	width: 30vw;
+	height: 5vh;
+	background-color:coral;
+	padding: 30px;
+}
+#childContainer{
+	background-color:cornflowerblue;
+	border: 1px solid black;
 }

@@ -40,6 +40,19 @@ function createOptionSelection(){
     }
 }
 
+function createRandomText(maxLength){
+    const text ='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, cupiditate saepe, impedit nemo dolorem modi, dolor nostrum soluta ex doloremque ut veniam quas optio? Maiores accusamus ratione unde perferendis odio natus ad cumque nobis amet voluptatem debitis, ipsam laboriosam saepe quidem earum sint quas eaque repellat vero laudantium beatae illo dicta iste consectetur? Rerum, culpa adipisci reprehenderit ad, sunt ullam magnam sint quis at dolores eius est distinctio neque cumque ea unde iusto, quae nostrum consequuntur dolorem molestias vel. Ducimus?';
+    
+    if(maxLength === undefined || maxLength == 0){
+        maxLength = text.length;
+    }
+
+    const length = Math.floor(Math.random() * maxLength) +1;
+    const textRes = text.substring(0, length) + '.';
+    return textRes;
+}
+
+
 const applyBtn = document.getElementById('applyBtn');
 applyBtn.addEventListener('click', ()=>{
     const numb = containerNumb.value;
@@ -89,14 +102,29 @@ function setFontSize(){
     });
 }
 
-function createRandomText(maxLength){
-    const text ='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, cupiditate saepe, impedit nemo dolorem modi, dolor nostrum soluta ex doloremque ut veniam quas optio? Maiores accusamus ratione unde perferendis odio natus ad cumque nobis amet voluptatem debitis, ipsam laboriosam saepe quidem earum sint quas eaque repellat vero laudantium beatae illo dicta iste consectetur? Rerum, culpa adipisci reprehenderit ad, sunt ullam magnam sint quis at dolores eius est distinctio neque cumque ea unde iusto, quae nostrum consequuntur dolorem molestias vel. Ducimus?';
-    
-    if(maxLength === undefined || maxLength == 0){
-        maxLength = text.length;
-    }
+setFontSizeWitoutFixedSize();
+function setFontSizeWitoutFixedSize(){
+    const childContainer = document.getElementById('childContainer');
 
-    const length = Math.floor(Math.random() * maxLength) +1;
-    const textRes = text.substring(0, length) + '.';
-    return textRes;
+    const newItem = document.createElement("div");
+    newItem.classList.add('multi-line');
+
+    newItem.style.width = childContainer.offsetWidth + 'px';
+    newItem.style.height = childContainer.offsetHeight + 'px';
+    newItem.textContent = childContainer.textContent;
+    document.body.appendChild(newItem);
+
+    let fontSize = 100; 
+    newItem.style.fontSize = `${fontSize}px`;
+
+    while (newItem.scrollWidth > newItem.offsetWidth || newItem.scrollHeight > newItem.offsetHeight) {
+        fontSize -= 1;
+        newItem.style.fontSize = `${fontSize}px`;
+    }
+    newItem.remove();
+
+    childContainer.style.fontSize = `${fontSize}px`;
 }
+window.addEventListener('resize', () => {
+    setFontSizeWitoutFixedSize()
+});
